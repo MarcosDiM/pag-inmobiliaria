@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
-    <?php include __DIR__ . '/../includes/header.php'; ?>
+    <?php include '../includes/header.php'; ?>
     <main>
         <h1>Contacto</h1>
     </main>
+    <?php include '../includes/footer.php'; ?>
 </body>
 </html>

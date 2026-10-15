@@ -6,7 +6,7 @@
 
 		<nav class="navegacion" aria-label="Navegación principal">
 			<a class="navegacion__enlace" href="/pag-inmobiliaria/index.php">Inicio</a>
-			<a class="navegacion__enlace" href="/pag-inmobiliaria/index.php#propiedades">Propiedades</a>
+			<a class="navegacion__enlace" href="/pag-inmobiliaria/pages/propiedades.php">Propiedades</a>
 			<a class="navegacion__enlace" href="/pag-inmobiliaria/index.php#nosotros">Nosotros</a>
 			<a class="navegacion__enlace" href="/pag-inmobiliaria/pages/contacto.php">Contacto</a>
 		</nav>
