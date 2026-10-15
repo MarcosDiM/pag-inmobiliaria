@@ -11,5 +11,6 @@
     <main>
         <h1>Contacto</h1>
     </main>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>
 </html>
