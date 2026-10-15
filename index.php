@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    rama marcos
+    <?php include 'includes/header.php'; ?>
 </body>
 </html>
+
+

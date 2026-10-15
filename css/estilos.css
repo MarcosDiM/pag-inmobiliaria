@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.cabecera {
+	width: 100%;
+	background-color: #f7f5f1;
+	border-bottom: 1px solid #e9e6e0;
+}
+
+.cabecera__interior {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	width: min(100% - 48px, 1280px);
+	height: 89px;
+	margin: 0 auto;
+}
+
+.marca {
+	display: inline-flex;
+	align-items: center;
+	width: fit-content;
+	color: #20211e;
+	text-decoration: none;
+}
+
+.marca__imagen {
+	display: block;
+	width: 102px;
+	height: auto;
+}
+
+.marca__simbolo {
+	display: grid;
+	width: 32px;
+	height: 32px;
+	place-items: center;
+	border-radius: 8px;
+	background-color: #20211e;
+	color: #fff;
+	font-family: Georgia, serif;
+	font-size: 23px;
+	font-style: italic;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.marca__nombre {
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 27px;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.navegacion {
+	display: flex;
+	align-items: center;
+	gap: 42px;
+}
+
+.navegacion__enlace {
+	color: #686963;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	text-decoration: none;
+	transition: color 160ms ease;
+}
+
+.navegacion__enlace:hover,
+.navegacion__enlace:focus-visible,
+.navegacion__enlace--activo {
+	color: #20211e;
+}
+
+.cabecera__contacto {
+	justify-self: end;
+	display: inline-flex;
+	min-width: 117px;
+	height: 48px;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid #20211e;
+	border-radius: 9px;
+	color: #20211e;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background-color 160ms ease, color 160ms ease;
+}
+
+.cabecera__contacto:hover,
+.cabecera__contacto:focus-visible {
+	background-color: #20211e;
+	color: #fff;
+}
+
+@media (max-width: 680px) {
+	.cabecera__interior {
+		grid-template-columns: 1fr auto;
+		width: calc(100% - 32px);
+		height: auto;
+		min-height: 76px;
+		padding: 12px 0;
+		row-gap: 16px;
+	}
+
+	.navegacion {
+		grid-column: 1 / -1;
+		grid-row: 2;
+		justify-content: space-between;
+		gap: 12px;
+	}
+
+	.navegacion__enlace {
+		font-size: 13px;
+	}
+
+	.cabecera__contacto {
+		min-width: 105px;
+		height: 42px;
+	}
+}
