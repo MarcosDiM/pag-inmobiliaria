@@ -26,7 +26,6 @@ Utiliza únicamente estas tecnologías para el desarrollo:
 
 ## Estructura del proyecto
 
-```
 pag-inmobiliaria/
 ├── includes/
 │   ├── header.php      — Cabecera con navegación
