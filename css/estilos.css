@@ -775,6 +775,68 @@ body > main {
 	text-decoration: none;
 }
 
+/* Página: pages/pagina-no-encontrada.php */
+.error-pagina {
+	display: grid;
+	min-height: 100vh;
+	place-items: center;
+	padding: 32px 16px;
+	background-color: #fff;
+	color: #20211e;
+	font-family: Arial, sans-serif;
+}
+
+.error-pagina__contenido {
+	width: min(100%, 480px);
+	text-align: center;
+	transform: translateY(-24px);
+}
+
+.error-pagina__codigo {
+	margin-bottom: 29px;
+	color: #bd8e5e;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 96px;
+	font-weight: 400;
+	line-height: 1;
+}
+
+.error-pagina__titulo {
+	margin-bottom: 14px;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 36px;
+	line-height: 1.2;
+}
+
+.error-pagina__descripcion {
+	max-width: 450px;
+	margin: 0 auto;
+	color: #777871;
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+.error-pagina__enlace {
+	display: inline-flex;
+	min-height: 46px;
+	align-items: center;
+	justify-content: center;
+	margin-top: 32px;
+	padding: 0 21px;
+	border-radius: 7px;
+	background-color: #bd8e5e;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background-color 160ms ease;
+}
+
+.error-pagina__enlace:hover,
+.error-pagina__enlace:focus-visible {
+	background-color: #a8794d;
+}
+
 @media (max-width: 680px) {
 	/* Responsive: includes/header.php */
 	.cabecera__interior {
@@ -944,6 +1006,19 @@ body > main {
 }
 
 @media (max-width: 420px) {
+	/* Responsive: pages/pagina-no-encontrada.php */
+	.error-pagina__codigo {
+		font-size: 80px;
+	}
+
+	.error-pagina__titulo {
+		font-size: 29px;
+	}
+
+	.error-pagina__descripcion {
+		font-size: 14px;
+	}
+
 	/* Responsive: index.php */
 	.inicio__lista-propiedades {
 		grid-template-columns: 1fr;
