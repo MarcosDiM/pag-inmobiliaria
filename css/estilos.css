@@ -1343,3 +1343,155 @@ body > main {
 		grid-row: auto;
 	}
 }
+
+/* Página: pages/politicas-privacidad.php */
+.privacidad {
+	padding: 42px 0 58px;
+	background-color: #fff;
+	color: #20211e;
+	font-family: Arial, sans-serif;
+}
+
+.privacidad__contenedor {
+	width: min(89%, 1280px);
+	margin: 0 auto;
+}
+
+.privacidad__ruta {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 14px;
+	color: #777871;
+	font-size: 11px;
+}
+
+.privacidad__ruta a {
+	color: #6c706b;
+	text-decoration: none;
+}
+
+.privacidad__ruta a:hover,
+.privacidad__ruta a:focus-visible {
+	color: #20211e;
+	text-decoration: underline;
+}
+
+.privacidad__encabezado {
+	margin-bottom: 26px;
+	padding: 18px 20px 14px;
+	border-radius: 12px;
+	background-color: #e8e6df;
+}
+
+.privacidad__etiqueta {
+	margin-bottom: 8px;
+	color: #bd8e5e;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+
+.privacidad__titulo {
+	margin-bottom: 10px;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 32px;
+	line-height: 1.15;
+	text-align: center;
+}
+
+.privacidad__introduccion {
+	color: #777871;
+	font-size: 13px;
+	line-height: 1.6;
+}
+
+.privacidad__seccion {
+	margin-bottom: 22px;
+}
+
+.privacidad__seccion h2 {
+	margin-bottom: 9px;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 19px;
+	line-height: 1.25;
+}
+
+.privacidad__seccion p {
+	margin-bottom: 12px;
+	color: #6c706b;
+	font-size: 12px;
+	line-height: 1.65;
+}
+
+.privacidad__seccion a {
+	color: #20211e;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.privacidad__seccion a:hover,
+.privacidad__seccion a:focus-visible {
+	color: #bd8e5e;
+}
+
+.privacidad__ayuda {
+	padding-top: 14px;
+	text-align: center;
+}
+
+.privacidad__ayuda p {
+	margin-bottom: 14px;
+	color: #777871;
+	font-size: 13px;
+}
+
+.privacidad__ayuda a {
+	display: inline-flex;
+	min-height: 40px;
+	align-items: center;
+	justify-content: center;
+	padding: 0 18px;
+	border: 1px solid #20211e;
+	border-radius: 7px;
+	color: #20211e;
+	font-size: 12px;
+	text-decoration: none;
+	transition: background-color 160ms ease, color 160ms ease;
+}
+
+.privacidad__ayuda a:hover,
+.privacidad__ayuda a:focus-visible {
+	background-color: #20211e;
+	color: #fff;
+}
+
+/* Responsive: pages/politicas-privacidad.php */
+@media (max-width: 680px) {
+	.privacidad {
+		padding: 30px 0 44px;
+	}
+
+	.privacidad__contenedor {
+		width: calc(100% - 32px);
+	}
+
+	.privacidad__encabezado {
+		padding: 16px;
+	}
+
+	.privacidad__titulo {
+		font-size: 27px;
+	}
+
+	.privacidad__seccion {
+		margin-bottom: 20px;
+	}
+
+	.privacidad__seccion h2 {
+		font-size: 17px;
+	}
+
+	.privacidad__seccion p {
+		font-size: 13px;
+	}
+}
