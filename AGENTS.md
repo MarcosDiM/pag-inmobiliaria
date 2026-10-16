@@ -44,6 +44,7 @@ pag-inmobiliaria/
 - **Funcionalidades básicas:** El objetivo es que el sitio funcione correctamente con características simples.
 - **Reutilización con includes:** Usa `include` de PHP para reutilizar el header y footer en las páginas que lo necesiten.
 - **Estilos centralizados:** Todo el CSS va en `css/estilos.css`. No usar estilos inline ni `<style>` en los HTML salvo casos excepcionales justificados.
+- **Secciones de CSS:** Organiza `css/estilos.css` por página o componente y agrega antes de cada bloque un comentario que identifique su archivo, por ejemplo `/* Página: pages/contacto.php */`. Para estilos reutilizados, indica que son compartidos y nombra el include o componente correspondiente y las páginas que lo usan. Mantén también identificados los bloques responsive.
 - **Comentarios simples:** Agrega comentarios breves en español cuando ayude a entender el código, pero sin exceso.
 
 ## Ejemplo de estructura básica

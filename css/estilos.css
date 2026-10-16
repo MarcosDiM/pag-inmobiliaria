@@ -1,9 +1,11 @@
+/* Estilos globales */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Compartido: includes/header.php */
 .cabecera {
 	width: 100%;
 	background-color: #f7f5f1;
@@ -98,6 +100,7 @@
 	color: #fff;
 }
 
+/* Compartido: includes/footer.php */
 .pie {
 	background-color: #f7f5f1;
 	color: #20211e;
@@ -214,6 +217,99 @@
 	font-size: 8px;
 }
 
+/* Página: pages/terminos-condiciones.php */
+.terminos {
+	padding: 42px 0 58px;
+	background-color: #fff;
+	color: #20211e;
+	font-family: Arial, sans-serif;
+}
+
+.terminos__contenedor {
+	width: min(calc(100% - 32px), 684px);
+	margin: 0 auto;
+}
+
+.terminos__cabecera {
+	margin-bottom: 25px;
+	padding: 12px 13px;
+	border-radius: 9px;
+	background-color: #e8e6df;
+	color: #20211e;
+}
+
+.terminos__etiqueta {
+	margin-bottom: 7px;
+	color: #bd8e5e;
+	font-size: 8px;
+	text-transform: uppercase;
+}
+
+.terminos__cabecera h1 {
+	margin-bottom: 6px;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 24px;
+	text-align: center;
+}
+
+.terminos__introduccion {
+	color: #62645e;
+	font-size: 9px;
+	line-height: 1.5;
+}
+
+.terminos__seccion {
+	margin-bottom: 18px;
+}
+
+.terminos__seccion h2 {
+	margin-bottom: 5px;
+	color: #20211e;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 14px;
+}
+
+.terminos__seccion p {
+	color: #6c706b;
+	font-size: 9px;
+	line-height: 1.55;
+}
+
+.terminos__seccion a {
+	color: #20211e;
+}
+
+.terminos__ayuda {
+	margin-top: 30px;
+	text-align: center;
+}
+
+.terminos__ayuda p {
+	margin-bottom: 12px;
+	color: #777871;
+	font-size: 12px;
+}
+
+.terminos__ayuda a {
+	display: inline-flex;
+	min-height: 36px;
+	align-items: center;
+	justify-content: center;
+	padding: 0 18px;
+	border-radius: 5px;
+	background-color: #fff;
+	border: 1px solid #b8b8b4;
+	color: #20211e;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+.terminos__ayuda a:hover,
+.terminos__ayuda a:focus-visible {
+	background-color: #f7f5f1;
+}
+
+/* Página: pages/nosotros.php */
 .nosotros {
 	display: grid;
 	min-height: 493px;
@@ -286,6 +382,7 @@
 	text-align: center;
 }
 
+/* Página: pages/propiedades.php */
 .propiedades {
 	width: min(100% - 48px, 1280px);
 	margin: 0 auto;
@@ -310,6 +407,7 @@
 	font-family: Arial, sans-serif;
 }
 
+/* Componente compartido: includes/tarjeta-propiedad.php; usado en index.php y pages/propiedades.php */
 .tarjeta-propiedad {
 	overflow: hidden;
 	border: 1px solid #e9e6e0;
@@ -401,6 +499,7 @@
 	color: #bd8e5e;
 }
 
+/* Página: index.php */
 .inicio {
 	background-color: #f7f6f1;
 	color: #20211e;
@@ -666,6 +765,7 @@
 }
 
 @media (max-width: 680px) {
+	/* Responsive: includes/header.php */
 	.cabecera__interior {
 		grid-template-columns: 1fr auto;
 		width: calc(100% - 32px);
@@ -691,11 +791,13 @@
 		height: 42px;
 	}
 
+	/* Responsive: includes/footer.php */
 	.pie__principal,
 	.pie__inferior {
 		width: calc(100% - 32px);
 	}
 
+	/* Responsive: pages/nosotros.php */
 	.nosotros {
 		min-height: auto;
 		padding: 32px 16px;
@@ -716,6 +818,7 @@
 		font-size: 15px;
 	}
 
+	/* Responsive: pages/propiedades.php */
 	.propiedades {
 		width: calc(100% - 32px);
 		padding: 40px 0 56px;
@@ -757,6 +860,7 @@
 		gap: 8px;
 	}
 
+	/* Responsive: index.php */
 	.inicio__titulo,
 	.inicio__seccion {
 		width: calc(100% - 32px);
@@ -822,12 +926,14 @@
 }
 
 @media (max-width: 900px) and (min-width: 681px) {
+	/* Responsive: index.php */
 	.inicio__lista-propiedades {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 	}
 }
 
 @media (max-width: 420px) {
+	/* Responsive: index.php */
 	.inicio__lista-propiedades {
 		grid-template-columns: 1fr;
 	}
