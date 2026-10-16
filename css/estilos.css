@@ -14,8 +14,8 @@
 	display: grid;
 	grid-template-columns: 1fr auto 1fr;
 	align-items: center;
-	width: min(100% - 48px, 1280px);
-	height: 89px;
+	width: min(89%, 1280px);
+	height: 62px;
 	margin: 0 auto;
 }
 
@@ -29,7 +29,7 @@
 
 .marca__imagen {
 	display: block;
-	width: 102px;
+	width: 72px;
 	height: auto;
 }
 
@@ -58,13 +58,13 @@
 .navegacion {
 	display: flex;
 	align-items: center;
-	gap: 42px;
+	gap: 30px;
 }
 
 .navegacion__enlace {
 	color: #686963;
 	font-family: Arial, sans-serif;
-	font-size: 14px;
+	font-size: 10px;
 	text-decoration: none;
 	transition: color 160ms ease;
 }
@@ -78,15 +78,15 @@
 .cabecera__contacto {
 	justify-self: end;
 	display: inline-flex;
-	min-width: 117px;
-	height: 48px;
+	min-width: 81px;
+	height: 34px;
 	align-items: center;
 	justify-content: center;
 	border: 1px solid #20211e;
-	border-radius: 9px;
+	border-radius: 7px;
 	color: #20211e;
 	font-family: Arial, sans-serif;
-	font-size: 14px;
+	font-size: 10px;
 	font-weight: 600;
 	text-decoration: none;
 	transition: background-color 160ms ease, color 160ms ease;
@@ -106,41 +106,41 @@
 
 .pie__principal,
 .pie__inferior {
-	width: min(100% - 48px, 1440px);
+	width: min(89%, 1440px);
 	margin: 0 auto;
 }
 
 .pie__principal {
 	display: grid;
-	grid-template-columns: 1.2fr 1fr 1fr;
-	padding: 72px 0 64px;
+	grid-template-columns: 1.5fr 1fr 0.7fr;
+	padding: 49px 0 34px;
 }
 
 .pie__marca {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: 22px;
+	gap: 14px;
 }
 
 .pie__logo img {
 	display: block;
-	width: 122px;
+	width: 72px;
 	height: auto;
 }
 
 .pie__redes {
 	display: flex;
-	gap: 12px;
+	gap: 9px;
 }
 
 .pie__red {
 	display: grid;
-	width: 54px;
-	height: 54px;
+	width: 28px;
+	height: 28px;
 	place-items: center;
 	border: 1px solid #e4e1db;
-	border-radius: 12px;
+	border-radius: 7px;
 	background-color: #fff;
 	text-decoration: none;
 	transition: background-color 160ms ease;
@@ -153,8 +153,8 @@
 
 .pie__red img {
 	display: block;
-	width: 32px;
-	height: 32px;
+	width: 16px;
+	height: 16px;
 	object-fit: contain;
 }
 
@@ -162,13 +162,13 @@
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: 18px;
+	gap: 10px;
 }
 
 .pie__titulo {
 	margin-bottom: 4px;
 	color: #bd8e5e;
-	font-size: 16px;
+	font-size: 9px;
 	font-weight: 700;
 	text-transform: uppercase;
 }
@@ -176,7 +176,7 @@
 .pie__enlace,
 .pie__enlace-legal {
 	color: #6c706b;
-	font-size: 16px;
+	font-size: 10px;
 	line-height: 1.5;
 	text-decoration: none;
 	transition: color 160ms ease;
@@ -191,7 +191,7 @@
 
 .pie__inferior {
 	display: flex;
-	min-height: 72px;
+	min-height: 48px;
 	align-items: center;
 	justify-content: space-between;
 	gap: 24px;
@@ -200,18 +200,90 @@
 
 .pie__derechos {
 	color: #999c97;
-	font-size: 14px;
+	font-size: 8px;
 }
 
 .pie__legal {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 24px;
+	gap: 20px;
 }
 
 .pie__enlace-legal {
 	color: #999c97;
-	font-size: 14px;
+	font-size: 8px;
+}
+
+.nosotros {
+	display: grid;
+	min-height: 493px;
+	place-items: center;
+	padding: 51px 0 52px;
+	background-color: #fff;
+}
+
+.nosotros__panel {
+	display: grid;
+	grid-template-columns: 38.5% 61.5%;
+	width: min(80.5%, 1100px);
+	min-height: 390px;
+	border: 1px solid #777871;
+	border-radius: 11px;
+	overflow: hidden;
+}
+
+.nosotros__titulo {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.nosotros__marca {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	background-color: #1b1d1a;
+}
+
+.nosotros__simbolo {
+	display: grid;
+	width: 28px;
+	height: 28px;
+	place-items: center;
+	border-radius: 5px;
+	background-color: #fff;
+	color: #1b1d1a;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 19px;
+	font-style: italic;
+	font-weight: 700;
+}
+
+.nosotros__nombre {
+	color: #fff;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.nosotros__texto {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 40px 15%;
+	background-color: #f7f5f1;
+	color: #20211e;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	line-height: 1.6;
+	text-align: center;
 }
 
 .propiedades {
@@ -622,6 +694,26 @@
 	.pie__principal,
 	.pie__inferior {
 		width: calc(100% - 32px);
+	}
+
+	.nosotros {
+		min-height: auto;
+		padding: 32px 16px;
+	}
+
+	.nosotros__panel {
+		grid-template-columns: 1fr;
+		width: 100%;
+	}
+
+	.nosotros__marca {
+		min-height: 170px;
+	}
+
+	.nosotros__texto {
+		min-height: 230px;
+		padding: 32px 24px;
+		font-size: 15px;
 	}
 
 	.propiedades {
