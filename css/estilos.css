@@ -826,7 +826,271 @@
 	background-color: #a8794d;
 }
 
+/* Componente: admin/menu-admin.php */
+:root {
+	--ancho-menu-admin: clamp(184px, 19vw, 240px);
+}
+
+.menu-admin {
+	position: fixed;
+	inset: 0 auto 0 0;
+	z-index: 10;
+	display: flex;
+	width: var(--ancho-menu-admin);
+	min-height: 100vh;
+	flex-direction: column;
+	padding: clamp(24px, 3vh, 36px) 20px 20px;
+	background-color: #1c1e1d;
+	color: #f7f7f5;
+	font-family: Arial, sans-serif;
+}
+
+.menu-admin__marca {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: fit-content;
+	margin-bottom: clamp(36px, 5vh, 60px);
+	color: #f7f7f5;
+	text-decoration: none;
+}
+
+.menu-admin__logo {
+	display: block;
+	width: min(100%, 115px);
+	height: auto;
+}
+
+.menu-admin__navegacion {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.menu-admin__titulo {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin: 0 0 8px;
+	padding: 0 12px;
+	color: #bd8e5e;
+	font-size: 15px;
+	font-weight: 600;
+}
+
+.menu-admin__titulo::before {
+	width: 17px;
+	height: 17px;
+	border: 3px;
+	border-radius: 4px;
+	content: "";
+}
+
+.menu-admin__enlace,
+.menu-admin__salir {
+	display: flex;
+	min-height: 50px;
+	align-items: center;
+	gap: 12px;
+	padding: 0 12px;
+	border-radius: 12px;
+	color: #bd8e5e;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: background-color 160ms ease, color 160ms ease;
+}
+
+.menu-admin__enlace:hover,
+.menu-admin__enlace:focus-visible,
+.menu-admin__salir:hover,
+.menu-admin__salir:focus-visible {
+	background-color: #2a2d2c;
+	color: #fff;
+}
+
+.menu-admin__enlace--activo {
+	background-color: #2a2d2c;
+	color: #fff;
+}
+
+.menu-admin__icono {
+	width: 20px;
+	height: 20px;
+	flex: 0 0 20px;
+}
+
+.menu-admin__salir {
+	min-height: 48px;
+	justify-content: center;
+	margin-top: auto;
+	background-color: #a95348;
+	color: #fff;
+	font-weight: 400;
+}
+
+.menu-admin__salir:hover,
+.menu-admin__salir:focus-visible {
+	background-color: #91483e;
+}
+
+.menu-admin ~ main {
+	margin-left: var(--ancho-menu-admin);
+}
+
+/* Página: admin/login.php */
+.pagina-login {
+	display: grid;
+	min-height: 100vh;
+	place-items: center;
+	padding: 24px 16px;
+	background-color: #fff;
+	color: #20211e;
+	font-family: Arial, sans-serif;
+}
+
+.login {
+	display: flex;
+	width: min(100%, 420px);
+	min-height: 423px;
+	flex-direction: column;
+	align-items: center;
+	padding: 49px 92px 48px;
+	border: 1px solid #efeee9;
+	background-color: #f7f6f2;
+	transform: translateY(-33px);
+}
+
+.login__marca {
+	display: block;
+	width: 78px;
+	margin-bottom: 17px;
+}
+
+.login__logo {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.login__titulo {
+	margin: 0 0 32px;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 22px;
+	line-height: 1.2;
+	white-space: nowrap;
+}
+
+.login__formulario {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+}
+
+.login__campo {
+	width: 100%;
+	height: 37px;
+	padding: 0 16px;
+	border: 1px solid #686963;
+	border-radius: 5px;
+	background-color: transparent;
+	color: #20211e;
+	font-family: Arial, sans-serif;
+	font-size: 10px;
+}
+
+.login__campo + .login__campo {
+	margin-top: 42px;
+}
+
+.login__campo:focus-visible {
+	outline: 2px solid #bd8e5e;
+	outline-offset: 2px;
+}
+
+.login__mensaje {
+	display: flex;
+	width: 100%;
+	height: 33px;
+	align-items: center;
+	gap: 10px;
+	margin: 21px 0 18px;
+	padding: 0 12px;
+	border-radius: 5px;
+	background-color: #ad534a;
+	color: #fff;
+	font-size: 10px;
+	line-height: 1.2;
+}
+
+.login__mensaje:empty {
+	visibility: hidden;
+}
+
+.login__icono-error {
+	display: grid;
+	width: 13px;
+	height: 13px;
+	flex: 0 0 13px;
+	place-items: center;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	font-size: 9px;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.login__boton {
+	width: 103px;
+	height: 36px;
+	align-self: center;
+	border: 1px solid #4a4a4a;
+	border-radius: 5px;
+	background-color: #e8e9eb;
+	color: #20211e;
+	font-family: Arial, sans-serif;
+	font-size: 11px;
+	cursor: pointer;
+}
+
+.login__boton:hover,
+.login__boton:focus-visible {
+	background-color: #d9dbdd;
+}
+
 @media (max-width: 680px) {
+	/* Responsive: admin/menu-admin.php */
+	:root {
+		--ancho-menu-admin: 184px;
+	}
+
+	.menu-admin {
+		padding-right: 14px;
+		padding-left: 14px;
+	}
+
+	.menu-admin__enlace,
+	.menu-admin__salir {
+		gap: 10px;
+		padding-right: 10px;
+		padding-left: 10px;
+		font-size: 13px;
+	}
+
+	.menu-admin__titulo {
+		gap: 10px;
+		padding-right: 10px;
+		padding-left: 10px;
+		font-size: 14px;
+	}
+
+	/* Responsive: admin/login.php */
+	.login {
+		padding-right: 24px;
+		padding-left: 24px;
+		transform: none;
+	}
+
 	/* Responsive: includes/header.php */
 	.cabecera__interior {
 		grid-template-columns: 1fr auto;
