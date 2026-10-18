@@ -30,8 +30,15 @@ try {
         imagen VARCHAR(255),
         propietario VARCHAR(150) NOT NULL
     )";
+
+    $sqlUsuarios = "CREATE TABLE IF NOT EXISTS usuarios (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        nombre VARCHAR(100) NOT NULL,
+        password VARCHAR(255) NOT NULL
+    )";
     
     $conexion->exec($sql);
+    $conexion->exec($sqlUsuarios);
 
 } catch (PDOException $e) {
     // Si hay un error crítico al conectar
