@@ -34,6 +34,6 @@ $operacionPropiedad = ($propiedad['tipo_operacion'] ?? '') === 'alquiler' ? ' / 
             <span class="tarjeta-propiedad__etiqueta">Precio</span>
             <p class="tarjeta-propiedad__precio">€<?php echo $precioPropiedad . $operacionPropiedad; ?></p>
         </div>
-        <a class="tarjeta-propiedad__enlace" href="/pag-inmobiliaria/pages/propiedad-detalle.php">Consultar <span aria-hidden="true">↗</span></a>
+        <a class="tarjeta-propiedad__enlace" href="/pag-inmobiliaria/pages/propiedad-detalle.php?id=<?php echo (int) ($propiedad['id'] ?? 0); ?>">Consultar <span aria-hidden="true">↗</span></a>
     </div>
 </article>
