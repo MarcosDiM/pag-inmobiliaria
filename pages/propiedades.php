@@ -145,3 +145,4 @@ $propiedades = $consultaPropiedades->fetchAll(PDO::FETCH_ASSOC);
     <?php include '../includes/footer.php'; ?>
 </body>
 </html>
+
