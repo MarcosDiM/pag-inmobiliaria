@@ -2147,3 +2147,323 @@ body > main {
 		grid-column: 1 / -1;
 	}
 }
+
+/* Página: admin/propiedades.php */
+.pagina-admin-propiedades {
+	background-color: #f7f6f2;
+	color: #20211e;
+}
+
+.admin-propiedades {
+	min-width: 0;
+	padding: 24px clamp(20px, 2.3vw, 36px) 36px;
+	font-family: Arial, sans-serif;
+}
+
+.admin-propiedades__encabezado {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	margin-bottom: 18px;
+}
+
+.admin-propiedades__titulo {
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: clamp(27px, 3vw, 36px);
+	line-height: 1.15;
+}
+
+.admin-propiedades__nueva {
+	display: inline-flex;
+	min-height: 42px;
+	align-items: center;
+	justify-content: center;
+	padding: 0 16px;
+	border-radius: 9px;
+	background-color: #bd8e5e;
+	color: #fff;
+	font-size: 12px;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.admin-propiedades__nueva:hover,
+.admin-propiedades__nueva:focus-visible {
+	background-color: #a8794d;
+}
+
+.admin-propiedades__filtros {
+	display: grid;
+	grid-template-columns: minmax(180px, 1fr) 120px 120px auto;
+	gap: 10px;
+	margin-bottom: 18px;
+}
+
+.admin-propiedades__busqueda,
+.admin-propiedades__filtro {
+	position: relative;
+	display: flex;
+	min-width: 0;
+	height: 38px;
+	align-items: center;
+}
+
+.admin-propiedades__etiqueta {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	clip-path: inset(50%);
+}
+
+.admin-propiedades__busqueda input,
+.admin-propiedades__filtro select {
+	width: 100%;
+	height: 100%;
+	border: 1px solid #e5e3de;
+	border-radius: 9px;
+	background-color: #fff;
+	color: #20211e;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+}
+
+.admin-propiedades__busqueda input {
+	padding: 0 12px 0 31px;
+}
+
+.admin-propiedades__busqueda input::placeholder {
+	color: #777873;
+}
+
+.admin-propiedades__icono-busqueda {
+	position: absolute;
+	left: 11px;
+	color: #686963;
+	font-size: 22px;
+	line-height: 1;
+	pointer-events: none;
+}
+
+.admin-propiedades__filtro select {
+	padding: 0 10px;
+}
+
+.admin-propiedades__busqueda input:focus-visible,
+.admin-propiedades__filtro select:focus-visible {
+	outline: 2px solid #bd8e5e;
+	outline-offset: 2px;
+}
+
+.admin-propiedades__aplicar,
+.admin-propiedades__limpiar {
+	align-self: center;
+	color: #686963;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+}
+
+.admin-propiedades__aplicar {
+	min-height: 38px;
+	padding: 0 12px;
+	border: 0;
+	border-radius: 8px;
+	background-color: #bd8e5e;
+	color: #fff;
+	cursor: pointer;
+}
+
+.admin-propiedades__aplicar:hover,
+.admin-propiedades__aplicar:focus-visible {
+	background-color: #a8794d;
+}
+
+.admin-propiedades__limpiar {
+	grid-column: 1 / -1;
+	justify-self: end;
+	text-decoration: none;
+}
+
+.admin-propiedades__limpiar:hover,
+.admin-propiedades__limpiar:focus-visible {
+	text-decoration: underline;
+}
+
+.admin-propiedades__tabla-contenedor {
+	overflow-x: auto;
+	border: 1px solid #e5e3de;
+	border-radius: 13px;
+	background-color: #fff;
+	box-shadow: 0 8px 22px rgb(32 33 30 / 5%);
+}
+
+.admin-propiedades__tabla {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+.admin-propiedades__tabla th {
+	height: 33px;
+	padding: 0 10px;
+	background-color: #f7f6f2;
+	color: #686963;
+	font-size: 9px;
+	font-weight: 500;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.admin-propiedades__tabla th:first-child,
+.admin-propiedades__tabla td:first-child {
+	padding-left: 12px;
+}
+
+.admin-propiedades__tabla td {
+	height: 75px;
+	padding: 9px 10px;
+	border-top: 1px solid #e8e6e1;
+	color: #686963;
+	font-size: 11px;
+}
+
+.admin-propiedades__imagen {
+	display: block;
+	width: 54px;
+	height: 54px;
+	border-radius: 10px;
+	object-fit: cover;
+}
+
+.admin-propiedades__imagen--vacia {
+	display: grid;
+	place-items: center;
+	background-color: #f0eee9;
+	color: #686963;
+	font-size: 8px;
+	text-align: center;
+}
+
+.admin-propiedades__tabla .admin-propiedades__nombre {
+	color: #20211e;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 13px;
+	font-weight: 700;
+}
+
+.admin-propiedades__tipo {
+	display: inline-block;
+	padding: 5px 8px;
+	border-radius: 5px;
+	background-color: #f7f6f2;
+	color: #20211e;
+}
+
+.admin-propiedades__tabla .admin-propiedades__precio {
+	color: #a8794d;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 13px;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.admin-propiedades__estado {
+	display: inline-block;
+	padding: 5px 9px;
+	border-radius: 20px;
+	font-size: 10px;
+}
+
+.admin-propiedades__estado--activo {
+	background-color: #fbf2e8;
+	color: #a8794d;
+}
+
+.admin-propiedades__estado--inactivo {
+	background-color: #efefef;
+	color: #686963;
+}
+
+.admin-propiedades__acciones {
+	display: flex;
+	gap: 5px;
+}
+
+.admin-propiedades__acciones a {
+	display: inline-flex;
+	min-height: 26px;
+	align-items: center;
+	justify-content: center;
+	padding: 0 8px;
+	border: 1px solid #e5e3de;
+	border-radius: 6px;
+	color: #20211e;
+	font-size: 10px;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.admin-propiedades__acciones a:hover,
+.admin-propiedades__acciones a:focus-visible {
+	background-color: #f7f6f2;
+}
+
+.admin-propiedades__tabla .admin-propiedades__vacio {
+	height: 80px;
+	color: #686963;
+	text-align: center;
+}
+
+.admin-propiedades__cantidad {
+	margin-top: 12px;
+	color: #686963;
+	font-size: 11px;
+	text-align: right;
+}
+
+/* Responsive: admin/propiedades.php */
+@media (max-width: 900px) {
+	.admin-propiedades__tabla {
+		min-width: 720px;
+	}
+}
+
+@media (max-width: 600px) {
+	.admin-propiedades {
+		padding: 20px 16px 28px;
+	}
+
+	.admin-propiedades__encabezado {
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	.admin-propiedades__nueva {
+		min-height: 38px;
+		padding: 0 10px;
+		font-size: 11px;
+	}
+
+	.admin-propiedades__filtros {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.admin-propiedades__busqueda {
+		grid-column: 1 / -1;
+	}
+
+	.admin-propiedades__filtro {
+		height: 40px;
+	}
+
+	.admin-propiedades__aplicar {
+		align-self: stretch;
+	}
+
+	.admin-propiedades__limpiar {
+		grid-column: 1 / -1;
+	}
+}
