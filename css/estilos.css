@@ -395,7 +395,7 @@ body > main {
 
 /* Página: pages/propiedades.php */
 .propiedades {
-	width: min(100% - 48px, 1280px);
+	width: min(100% - 64px, 1440px);
 	margin: 0 auto;
 	padding: 56px 0 80px;
 }
@@ -407,12 +407,6 @@ body > main {
 	font-size: 36px;
 }
 
-.propiedades__lista {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-	gap: 24px;
-}
-
 .propiedades__vacio {
 	color: #686963;
 	font-family: Arial, sans-serif;
@@ -422,16 +416,17 @@ body > main {
 .tarjeta-propiedad {
 	overflow: hidden;
 	border: 1px solid #e9e6e0;
-	border-radius: 10px;
+	border-radius: 12px;
 	background-color: #fff;
 	color: #20211e;
 	font-family: Arial, sans-serif;
+	box-shadow: 0 8px 22px rgb(32 33 30 / 7%);
 }
 
 .tarjeta-propiedad__imagen {
 	display: block;
 	width: 100%;
-	height: 240px;
+	aspect-ratio: 3 / 2;
 	object-fit: cover;
 }
 
@@ -444,70 +439,115 @@ body > main {
 }
 
 .tarjeta-propiedad__contenido {
-	padding: 20px 22px 18px;
+	padding: clamp(12px, 1.6vw, 20px);
 }
 
 .tarjeta-propiedad__nombre {
-	margin-bottom: 8px;
+	margin-bottom: 6px;
 	font-family: Georgia, 'Times New Roman', serif;
-	font-size: 23px;
+	font-size: clamp(14px, 1.3vw, 20px);
+	line-height: 1.15;
 }
 
 .tarjeta-propiedad__ubicacion {
-	margin-bottom: 16px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	margin-bottom: 12px;
 	color: #686963;
-	font-size: 14px;
+	font-size: clamp(9px, 0.85vw, 13px);
+	line-height: 1.3;
+}
+
+.tarjeta-propiedad__ubicacion svg {
+	width: 14px;
+	height: 14px;
+	flex: 0 0 14px;
+	stroke: #bd8e5e;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 2;
 }
 
 .tarjeta-propiedad__caracteristicas {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 8px;
+	gap: 5px;
 	list-style: none;
 }
 
 .tarjeta-propiedad__caracteristicas li {
-	padding: 7px 10px;
+	display: inline-flex;
+	min-height: 24px;
+	align-items: center;
+	gap: 4px;
+	padding: 4px 6px;
 	border-radius: 6px;
 	background-color: #f7f5f1;
-	font-size: 13px;
+	font-size: clamp(8px, 0.7vw, 11px);
+	white-space: nowrap;
+}
+
+.tarjeta-propiedad__caracteristicas svg {
+	width: 13px;
+	height: 13px;
+	flex: 0 0 13px;
+	stroke: #777871;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 2;
 }
 
 .tarjeta-propiedad__pie {
 	display: flex;
-	min-height: 72px;
+	min-height: 48px;
 	align-items: center;
 	justify-content: space-between;
-	gap: 16px;
-	padding: 14px 22px;
+	gap: 8px;
+	padding: 8px clamp(12px, 1.6vw, 20px);
 	border-top: 1px solid #e9e6e0;
 }
 
 .tarjeta-propiedad__etiqueta {
+	display: block;
+	margin-bottom: 2px;
 	color: #686963;
-	font-size: 11px;
+	font-size: clamp(8px, 0.65vw, 10px);
+	font-weight: 600;
 	text-transform: uppercase;
 }
 
 .tarjeta-propiedad__precio {
-	margin-top: 3px;
 	color: #bd8e5e;
 	font-family: Georgia, 'Times New Roman', serif;
-	font-size: 22px;
+	font-size: clamp(12px, 1.1vw, 16px);
 	font-weight: 700;
+	line-height: 1.1;
 }
 
 .tarjeta-propiedad__enlace {
 	flex-shrink: 0;
 	color: #20211e;
-	font-size: 13px;
+	font-size: clamp(8px, 0.72vw, 11px);
 	font-weight: 600;
 	text-decoration: none;
+}
+
+.tarjeta-propiedad__enlace span {
+	margin-left: 4px;
+	font-size: 1.2em;
 }
 
 .tarjeta-propiedad__enlace:hover,
 .tarjeta-propiedad__enlace:focus-visible {
 	color: #bd8e5e;
+}
+
+.inicio__lista-propiedades,
+.propiedades__lista {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 12px;
 }
 
 /* Página: index.php */
@@ -527,9 +567,14 @@ body > main {
 	background-size: cover;
 }
 
-.inicio__titulo,
-.inicio__seccion {
+.inicio__titulo {
 	width: min(100% - 86px, 1280px);
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.inicio__seccion {
+	width: min(100% - 64px, 1440px);
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -569,60 +614,6 @@ body > main {
 
 .inicio__ver-todo span {
 	margin-left: 5px;
-}
-
-.inicio__lista-propiedades {
-	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
-	gap: 16px;
-}
-
-.inicio__lista-propiedades .tarjeta-propiedad {
-	box-shadow: 0 5px 14px rgb(32 33 30 / 6%);
-}
-
-.inicio__lista-propiedades .tarjeta-propiedad__imagen {
-	height: 145px;
-}
-
-.inicio__lista-propiedades .tarjeta-propiedad__contenido {
-	padding: 12px 14px 10px;
-}
-
-.inicio__lista-propiedades .tarjeta-propiedad__nombre {
-	margin-bottom: 5px;
-	font-size: 17px;
-}
-
-.inicio__lista-propiedades .tarjeta-propiedad__ubicacion {
-	margin-bottom: 10px;
-	font-size: 12px;
-}
-
-.inicio__lista-propiedades .tarjeta-propiedad__caracteristicas {
-	gap: 5px;
-}
-
-.inicio__lista-propiedades .tarjeta-propiedad__caracteristicas li {
-	padding: 5px 7px;
-	font-size: 10px;
-}
-
-.inicio__lista-propiedades .tarjeta-propiedad__pie {
-	min-height: 50px;
-	padding: 8px 14px;
-}
-
-.inicio__lista-propiedades .tarjeta-propiedad__etiqueta {
-	font-size: 9px;
-}
-
-.inicio__lista-propiedades .tarjeta-propiedad__precio {
-	font-size: 16px;
-}
-
-.inicio__lista-propiedades .tarjeta-propiedad__enlace {
-	font-size: 10px;
 }
 
 .inicio__confianza {
@@ -1165,10 +1156,6 @@ body > main {
 		font-size: 30px;
 	}
 
-	.tarjeta-propiedad__imagen {
-		height: 210px;
-	}
-
 	.pie__principal {
 		grid-template-columns: 1fr 1fr;
 		gap: 36px 20px;
@@ -1198,7 +1185,10 @@ body > main {
 	}
 
 	/* Responsive: index.php */
-	.inicio__titulo,
+	.inicio__titulo {
+		width: calc(100% - 32px);
+	}
+
 	.inicio__seccion {
 		width: calc(100% - 32px);
 	}
@@ -1216,14 +1206,9 @@ body > main {
 		font-size: 23px;
 	}
 
-	.inicio__lista-propiedades,
 	.inicio__lista-razones {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 12px;
-	}
-
-	.inicio__lista-propiedades .tarjeta-propiedad__imagen {
-		height: 130px;
 	}
 
 	.inicio__confianza {
@@ -1263,9 +1248,20 @@ body > main {
 }
 
 @media (max-width: 900px) and (min-width: 681px) {
-	/* Responsive: index.php */
-	.inicio__lista-propiedades {
+	/* Responsive: componente includes/tarjeta-propiedad.php */
+	.inicio__lista-propiedades,
+	.propiedades__lista {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 12px;
+	}
+}
+
+@media (max-width: 680px) {
+	/* Responsive: componente includes/tarjeta-propiedad.php */
+	.inicio__lista-propiedades,
+	.propiedades__lista {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 12px;
 	}
 }
 
@@ -1283,21 +1279,18 @@ body > main {
 		font-size: 14px;
 	}
 
-	/* Responsive: index.php */
-	.inicio__lista-propiedades {
-		grid-template-columns: 1fr;
-	}
-
-	.inicio__lista-propiedades .tarjeta-propiedad__imagen {
-		height: 190px;
-	}
-
 	.inicio__lista-razones {
 		grid-template-columns: 1fr;
 	}
 
 	.inicio__razon {
 		min-height: 0;
+	}
+
+	/* Responsive: componente includes/tarjeta-propiedad.php */
+	.inicio__lista-propiedades,
+	.propiedades__lista {
+		grid-template-columns: 1fr;
 	}
 }
 
@@ -2116,61 +2109,6 @@ body > main {
 	text-decoration: underline;
 }
 
-.propiedades__lista {
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 22px;
-}
-
-.propiedades__lista .tarjeta-propiedad {
-	border: 0;
-	border-radius: 12px;
-	box-shadow: 0 5px 16px rgb(32 33 30 / 7%);
-}
-
-.propiedades__lista .tarjeta-propiedad__imagen {
-	height: 180px;
-}
-
-.propiedades__lista .tarjeta-propiedad__contenido {
-	padding: 14px 16px 12px;
-}
-
-.propiedades__lista .tarjeta-propiedad__nombre {
-	margin-bottom: 5px;
-	font-size: 18px;
-}
-
-.propiedades__lista .tarjeta-propiedad__ubicacion {
-	margin-bottom: 10px;
-	font-size: 12px;
-}
-
-.propiedades__lista .tarjeta-propiedad__caracteristicas {
-	gap: 6px;
-}
-
-.propiedades__lista .tarjeta-propiedad__caracteristicas li {
-	padding: 5px 7px;
-	font-size: 10px;
-}
-
-.propiedades__lista .tarjeta-propiedad__pie {
-	min-height: 58px;
-	padding: 10px 16px;
-}
-
-.propiedades__lista .tarjeta-propiedad__etiqueta {
-	font-size: 9px;
-}
-
-.propiedades__lista .tarjeta-propiedad__precio {
-	font-size: 17px;
-}
-
-.propiedades__lista .tarjeta-propiedad__enlace {
-	font-size: 11px;
-}
-
 .propiedades__vacio {
 	padding: 20px;
 	border-radius: 8px;
@@ -2190,10 +2128,6 @@ body > main {
 	.propiedades__formulario-filtros {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
-
-	.propiedades__lista {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
 }
 
 @media (max-width: 600px) {
@@ -2211,14 +2145,5 @@ body > main {
 
 	.propiedades__acciones-filtros {
 		grid-column: 1 / -1;
-	}
-
-	.propiedades__lista {
-		grid-template-columns: 1fr;
-		gap: 16px;
-	}
-
-	.propiedades__lista .tarjeta-propiedad__imagen {
-		height: 210px;
 	}
 }

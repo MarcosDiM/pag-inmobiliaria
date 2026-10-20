@@ -19,7 +19,7 @@ $operacionPropiedad = ($propiedad['tipo_operacion'] ?? '') === 'alquiler' ? ' / 
             <?php echo $ubicacionPropiedad; ?>
         </p>
 
-        <ul class="tarjeta-propiedad__caracteristicas" aria-label="Características">
+        <ul class="tarjeta-propiedad__caracteristicas" aria-label="Características de la propiedad">
             <?php if (!empty($propiedad['habitaciones'])): ?>
                 <li><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20V8h16v12M4 12h16M7 8V5h10v3"></path></svg><?php echo (int) $propiedad['habitaciones']; ?> Hab</li>
             <?php endif; ?>
@@ -37,10 +37,6 @@ $operacionPropiedad = ($propiedad['tipo_operacion'] ?? '') === 'alquiler' ? ' / 
             <span class="tarjeta-propiedad__etiqueta">Precio</span>
             <p class="tarjeta-propiedad__precio">€<?php echo $precioPropiedad . $operacionPropiedad; ?></p>
         </div>
-        <?php if (!empty($propiedad['es_muestra'])): ?>
-            <a class="tarjeta-propiedad__enlace" href="/pag-inmobiliaria/pages/contacto.php">Consultar <span aria-hidden="true">↗</span></a>
-        <?php else: ?>
-            <a class="tarjeta-propiedad__enlace" href="/pag-inmobiliaria/pages/propiedad-detalle.php?id=<?php echo (int) ($propiedad['id'] ?? 0); ?>">Ver detalle <span aria-hidden="true">↗</span></a>
-        <?php endif; ?>
+        <a class="tarjeta-propiedad__enlace" href="/pag-inmobiliaria/pages/propiedad-detalle.php?id=<?php echo (int) ($propiedad['id'] ?? 0); ?>">Ver detalle <span aria-hidden="true">↗</span></a>
     </div>
 </article>
