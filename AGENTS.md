@@ -11,8 +11,9 @@ Utiliza únicamente estas tecnologías para el desarrollo:
 - **HTML** — estructura de las páginas
 - **CSS** — estilos y diseño
 - **PHP** — lógica del servidor e includes
+- **MySQL con PDO** — almacenamiento sencillo de los datos del proyecto
 
-**No se debe usar:** JavaScript, frameworks PHP (Laravel, Symfony, etc.), frameworks CSS (Bootstrap, Tailwind, etc.), gestores de paquetes (Composer, npm), bases de datos, ni cualquier otra tecnología adicional.
+**No se debe usar:** JavaScript, frameworks PHP (Laravel, Symfony, etc.), frameworks CSS (Bootstrap, Tailwind, etc.), gestores de paquetes (Composer, npm), ni tecnologías adicionales a las permitidas arriba.
 
 ## Convención de nombres
 
