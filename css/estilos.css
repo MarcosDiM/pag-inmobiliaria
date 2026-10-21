@@ -2292,6 +2292,23 @@ body > main {
 	text-decoration: underline;
 }
 
+.admin-propiedades__mensaje {
+	margin: 0 0 16px;
+	padding: 12px 14px;
+	border-radius: 8px;
+	font-size: 12px;
+}
+
+.admin-propiedades__mensaje--error {
+	background-color: #fbefed;
+	color: #91483e;
+}
+
+.admin-propiedades__mensaje--exito {
+	background-color: #edf5ed;
+	color: #356b3b;
+}
+
 .admin-propiedades__tabla-contenedor {
 	overflow-x: auto;
 	border: 1px solid #e5e3de;
@@ -2389,10 +2406,12 @@ body > main {
 
 .admin-propiedades__acciones {
 	display: flex;
+	align-items: center;
 	gap: 5px;
 }
 
-.admin-propiedades__acciones a {
+.admin-propiedades__acciones a,
+.admin-propiedades__boton-eliminar {
 	display: inline-flex;
 	min-height: 26px;
 	align-items: center;
@@ -2400,15 +2419,109 @@ body > main {
 	padding: 0 8px;
 	border: 1px solid #e5e3de;
 	border-radius: 6px;
+	background-color: #fff;
 	color: #20211e;
 	font-size: 10px;
 	text-decoration: none;
 	white-space: nowrap;
+	cursor: pointer;
 }
 
 .admin-propiedades__acciones a:hover,
-.admin-propiedades__acciones a:focus-visible {
+.admin-propiedades__acciones a:focus-visible,
+.admin-propiedades__boton-eliminar:hover,
+.admin-propiedades__boton-eliminar:focus-visible {
 	background-color: #f7f6f2;
+}
+
+.admin-propiedades__control-eliminacion {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+.admin-propiedades__control-eliminacion:focus-visible + .admin-propiedades__boton-eliminar {
+	outline: 2px solid #bd8e5e;
+	outline-offset: 2px;
+}
+
+.admin-propiedades__confirmacion {
+	position: fixed;
+	z-index: 20;
+	inset: 0;
+	display: none;
+	place-items: center;
+	padding: 16px;
+	background-color: rgb(32 33 30 / 38%);
+}
+
+.admin-propiedades__control-eliminacion:checked ~ .admin-propiedades__confirmacion {
+	display: grid;
+}
+
+.admin-propiedades__ventana {
+	width: min(420px, 100%);
+	padding: 24px;
+	border-radius: 12px;
+	background-color: #fff;
+	box-shadow: 0 16px 48px rgb(32 33 30 / 20%);
+}
+
+.admin-propiedades__ventana h2 {
+	margin: 0 0 10px;
+	color: #20211e;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 23px;
+	line-height: 1.2;
+}
+
+.admin-propiedades__ventana p {
+	margin: 0;
+	color: #777873;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.admin-propiedades__botones-confirmacion {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin-top: 20px;
+}
+
+.admin-propiedades__boton-confirmacion {
+	display: inline-flex;
+	min-width: 82px;
+	min-height: 36px;
+	align-items: center;
+	justify-content: center;
+	padding: 0 14px;
+	border: 1px solid #e5e3de;
+	border-radius: 6px;
+	background-color: #fff;
+	color: #20211e;
+	font-family: Arial, sans-serif;
+	font-size: 11px;
+	cursor: pointer;
+}
+
+.admin-propiedades__boton-confirmacion:hover,
+.admin-propiedades__boton-confirmacion:focus-visible {
+	background-color: #f7f6f2;
+}
+
+.admin-propiedades__boton-confirmacion--eliminar {
+	border-color: #ad534a;
+	background-color: #ad534a;
+	color: #fff;
+}
+
+.admin-propiedades__boton-confirmacion--eliminar:hover,
+.admin-propiedades__boton-confirmacion--eliminar:focus-visible {
+	background-color: #91483e;
 }
 
 .admin-propiedades__tabla .admin-propiedades__vacio {

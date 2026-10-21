@@ -1,6 +1,49 @@
 <?php
 require_once __DIR__ . '/../conexion.php';
 
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
+if (empty($_SESSION['token_eliminar_propiedad'])) {
+    $_SESSION['token_eliminar_propiedad'] = bin2hex(random_bytes(32));
+}
+
+$mensajeError = '';
+$mensajeExito = $_SESSION['mensaje_eliminar_propiedad'] ?? '';
+unset($_SESSION['mensaje_eliminar_propiedad']);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['accion'] ?? '') === 'eliminar') {
+    $idPropiedad = filter_var($_POST['id'] ?? null, FILTER_VALIDATE_INT);
+    $tokenRecibido = $_POST['token'] ?? '';
+
+    if (
+        ($_POST['confirmar_eliminacion'] ?? '') !== '1'
+        || !is_int($idPropiedad)
+        || $idPropiedad < 1
+        || !is_string($tokenRecibido)
+        || !hash_equals($_SESSION['token_eliminar_propiedad'], $tokenRecibido)
+    ) {
+        $mensajeError = 'No se pudo confirmar la eliminación. Actualiza la página e inténtalo de nuevo.';
+    } else {
+        try {
+            $consultaEliminar = $conexion->prepare('DELETE FROM propiedades WHERE id = :id');
+            $consultaEliminar->execute(['id' => $idPropiedad]);
+
+            if ($consultaEliminar->rowCount() !== 1) {
+                $mensajeError = 'No se encontró la propiedad que intentas eliminar.';
+            } else {
+                $_SESSION['mensaje_eliminar_propiedad'] = 'La propiedad se eliminó correctamente.';
+                header('Location: propiedades.php');
+                exit;
+            }
+        } catch (PDOException $error) {
+            error_log('Error al eliminar una propiedad: ' . $error->getMessage());
+            $mensajeError = 'Ocurrió un error al eliminar la propiedad. Inténtalo de nuevo.';
+        }
+    }
+}
+
 $busqueda = trim($_GET['busqueda'] ?? '');
 $filtroTipo = $_GET['tipo'] ?? '';
 $filtroEstado = $_GET['estado'] ?? '';
@@ -60,6 +103,12 @@ $propiedades = $consultaPropiedades->fetchAll(PDO::FETCH_ASSOC);
             <h1 class="admin-propiedades__titulo">Propiedades</h1>
             <a class="admin-propiedades__nueva" href="agregar-propiedad.php">＋ Nueva Propiedad</a>
         </header>
+
+        <?php if ($mensajeError !== '' || $mensajeExito !== ''): ?>
+            <p class="admin-propiedades__mensaje <?php echo $mensajeError !== '' ? 'admin-propiedades__mensaje--error' : 'admin-propiedades__mensaje--exito'; ?>" role="status">
+                <?php echo htmlspecialchars($mensajeError !== '' ? $mensajeError : $mensajeExito, ENT_QUOTES, 'UTF-8'); ?>
+            </p>
+        <?php endif; ?>
 
         <form class="admin-propiedades__filtros" method="get" action="propiedades.php">
             <label class="admin-propiedades__busqueda">
@@ -132,7 +181,23 @@ $propiedades = $consultaPropiedades->fetchAll(PDO::FETCH_ASSOC);
                             <td data-etiqueta="Acciones">
                                 <div class="admin-propiedades__acciones">
                                     <a href="agregar-propiedad.php?id=<?php echo (int) $propiedad['id']; ?>">Editar</a>
-                                    <a href="../pages/propiedad-detalle.php?id=<?php echo (int) $propiedad['id']; ?>">Ver</a>
+                                    <form class="admin-propiedades__formulario-eliminar" method="post" action="propiedades.php">
+                                        <input type="hidden" name="accion" value="eliminar">
+                                        <input type="hidden" name="id" value="<?php echo (int) $propiedad['id']; ?>">
+                                        <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token_eliminar_propiedad'], ENT_QUOTES, 'UTF-8'); ?>">
+                                        <input class="admin-propiedades__control-eliminacion" id="confirmar-eliminacion-<?php echo (int) $propiedad['id']; ?>" type="checkbox" aria-label="Confirmar eliminación de <?php echo $nombre; ?>">
+                                        <label class="admin-propiedades__boton-eliminar" for="confirmar-eliminacion-<?php echo (int) $propiedad['id']; ?>">Eliminar</label>
+                                        <div class="admin-propiedades__confirmacion">
+                                            <section class="admin-propiedades__ventana" role="dialog" aria-modal="true" aria-labelledby="titulo-eliminacion-<?php echo (int) $propiedad['id']; ?>" aria-describedby="texto-eliminacion-<?php echo (int) $propiedad['id']; ?>">
+                                                <h2 id="titulo-eliminacion-<?php echo (int) $propiedad['id']; ?>">¿Estás seguro de eliminar esta propiedad?</h2>
+                                                <p id="texto-eliminacion-<?php echo (int) $propiedad['id']; ?>">Esta acción no se puede deshacer. La propiedad se eliminará del panel.</p>
+                                                <div class="admin-propiedades__botones-confirmacion">
+                                                    <label class="admin-propiedades__boton-confirmacion" for="confirmar-eliminacion-<?php echo (int) $propiedad['id']; ?>">No</label>
+                                                    <button class="admin-propiedades__boton-confirmacion admin-propiedades__boton-confirmacion--eliminar" type="submit" name="confirmar_eliminacion" value="1">Sí</button>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
