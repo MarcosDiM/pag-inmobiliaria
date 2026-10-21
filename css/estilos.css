@@ -2467,3 +2467,303 @@ body > main {
 		grid-column: 1 / -1;
 	}
 }
+
+/* Página: admin/agregar-propiedad.php */
+.pagina-admin-agregar-propiedad {
+	background-color: #f7f6f2;
+	color: #20211e;
+}
+
+.admin-agregar-propiedad {
+	min-width: 0;
+	padding: clamp(22px, 3.2vw, 42px);
+	font-family: Arial, sans-serif;
+}
+
+.admin-agregar-propiedad__tarjeta {
+	width: min(100%, 1050px);
+	margin: 0 auto;
+	overflow: hidden;
+	border: 1px solid #e5e3de;
+	border-radius: 20px;
+	background-color: #fff;
+	box-shadow: 0 14px 30px rgb(32 33 30 / 6%);
+}
+
+.admin-agregar-propiedad__encabezado {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	padding: 22px 26px 18px;
+	border-bottom: 1px solid #eeece8;
+}
+
+.admin-agregar-propiedad__titulo {
+	margin-bottom: 6px;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: clamp(25px, 2.5vw, 32px);
+	line-height: 1.15;
+}
+
+.admin-agregar-propiedad__introduccion {
+	color: #777873;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.admin-agregar-propiedad__acciones {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	gap: 10px;
+}
+
+.admin-agregar-propiedad__cancelar,
+.admin-agregar-propiedad__crear {
+	display: inline-flex;
+	min-height: 42px;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 0 15px;
+	border-radius: 8px;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	text-decoration: none;
+	transition: background-color 160ms ease, color 160ms ease;
+}
+
+.admin-agregar-propiedad__cancelar {
+	border: 1px solid #777873;
+	background-color: #fff;
+	color: #20211e;
+}
+
+.admin-agregar-propiedad__cancelar:hover,
+.admin-agregar-propiedad__cancelar:focus-visible {
+	background-color: #f7f6f2;
+}
+
+.admin-agregar-propiedad__crear {
+	border: 0;
+	background-color: #bd8e5e;
+	color: #fff;
+	cursor: pointer;
+}
+
+.admin-agregar-propiedad__crear:hover,
+.admin-agregar-propiedad__crear:focus-visible {
+	background-color: #a8794d;
+}
+
+.admin-agregar-propiedad__crear span,
+.admin-agregar-propiedad__boton-archivos span {
+	font-size: 17px;
+	line-height: 1;
+}
+
+.admin-agregar-propiedad__formulario {
+	padding: 20px 26px 26px;
+}
+
+.admin-agregar-propiedad__campos {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 15px 18px;
+}
+
+.admin-agregar-propiedad__campo {
+	display: flex;
+	min-width: 0;
+	flex-direction: column;
+	gap: 7px;
+	color: #33342f;
+	font-size: 11px;
+	font-weight: 600;
+}
+
+.admin-agregar-propiedad__campo input,
+.admin-agregar-propiedad__campo select,
+.admin-agregar-propiedad__campo textarea {
+	width: 100%;
+	min-height: 43px;
+	padding: 0 12px;
+	border: 1px solid #e2e1dd;
+	border-radius: 10px;
+	background-color: #fff;
+	color: #20211e;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.admin-agregar-propiedad__campo input::placeholder,
+.admin-agregar-propiedad__campo textarea::placeholder {
+	color: #858680;
+	opacity: 1;
+}
+
+.admin-agregar-propiedad__campo select {
+	padding-right: 30px;
+	color: #777873;
+}
+
+.admin-agregar-propiedad__campo select:valid {
+	color: #20211e;
+}
+
+.admin-agregar-propiedad__campo textarea {
+	min-height: 60px;
+	padding: 12px;
+	resize: vertical;
+}
+
+.admin-agregar-propiedad__campo input:focus-visible,
+.admin-agregar-propiedad__campo select:focus-visible,
+.admin-agregar-propiedad__campo textarea:focus-visible,
+.admin-agregar-propiedad__selector-archivos:focus-within {
+	outline: 2px solid #bd8e5e;
+	outline-offset: 2px;
+}
+
+.admin-agregar-propiedad__campo--descripcion {
+	margin-top: 15px;
+}
+
+.admin-agregar-propiedad__galeria {
+	min-width: 0;
+	margin-top: 15px;
+	border: 0;
+}
+
+.admin-agregar-propiedad__galeria legend {
+	margin-bottom: 8px;
+	color: #33342f;
+	font-size: 11px;
+	font-weight: 600;
+}
+
+.admin-agregar-propiedad__zona-archivos {
+	padding: 8px;
+	border-radius: 13px;
+	background-color: #f7f6f2;
+}
+
+.admin-agregar-propiedad__zona-texto {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin: 0 0 7px;
+}
+
+.admin-agregar-propiedad__zona-texto h2 {
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 16px;
+}
+
+.admin-agregar-propiedad__etiqueta-portada {
+	padding: 6px 10px;
+	border-radius: 20px;
+	background-color: #eaf1f2;
+	color: #687b7e;
+	font-size: 9px;
+}
+
+.admin-agregar-propiedad__selector-archivos {
+	position: relative;
+	display: flex;
+	min-height: 90px;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	border: 1px dashed #d8d5cd;
+	border-radius: 10px;
+	background-color: #fff;
+	color: #777873;
+	font-size: 10px;
+	font-weight: 400;
+	text-align: center;
+	cursor: pointer;
+}
+
+.admin-agregar-propiedad__selector-archivos strong {
+	color: #33342f;
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 14px;
+}
+
+.admin-agregar-propiedad__selector-archivos input {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.admin-agregar-propiedad__boton-archivos {
+	display: inline-flex;
+	min-height: 36px;
+	align-items: center;
+	gap: 7px;
+	margin-top: 2px;
+	padding: 0 14px;
+	border-radius: 8px;
+	background-color: #bd8e5e;
+	color: #fff;
+	font-size: 10px;
+}
+
+.admin-agregar-propiedad__selector-archivos:hover .admin-agregar-propiedad__boton-archivos {
+	background-color: #a8794d;
+}
+
+/* Responsive: admin/agregar-propiedad.php */
+@media (max-width: 850px) {
+	.admin-agregar-propiedad__encabezado {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 600px) {
+	.admin-agregar-propiedad {
+		padding: 18px 14px 24px;
+	}
+
+	.admin-agregar-propiedad__tarjeta {
+		border-radius: 15px;
+	}
+
+	.admin-agregar-propiedad__encabezado {
+		gap: 16px;
+		padding: 20px 16px 16px;
+	}
+
+	.admin-agregar-propiedad__acciones {
+		width: 100%;
+	}
+
+	.admin-agregar-propiedad__cancelar,
+	.admin-agregar-propiedad__crear {
+		flex: 1;
+		padding: 0 9px;
+	}
+
+	.admin-agregar-propiedad__formulario {
+		padding: 18px 16px 20px;
+	}
+
+	.admin-agregar-propiedad__campos {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 13px;
+	}
+
+	.admin-agregar-propiedad__campo--descripcion,
+	.admin-agregar-propiedad__galeria {
+		margin-top: 13px;
+	}
+}
