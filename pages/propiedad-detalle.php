@@ -16,6 +16,10 @@ if (!$propiedad) {
     http_response_code(404);
 }
 
+// Define el título según si se encontró la propiedad.
+$tituloPropiedad = $propiedad
+    ? htmlspecialchars((string) $propiedad['nombre'], ENT_QUOTES, 'UTF-8') . ' | Nido'
+    : 'Propiedad no encontrada | Nido';
 ?>
 <!DOCTYPE html>
 <html lang="es">
