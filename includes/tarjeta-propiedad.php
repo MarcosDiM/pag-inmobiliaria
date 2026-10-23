@@ -1,7 +1,12 @@
 <?php
+// Prepara la imagen de la propiedad.
 $imagenPropiedad = trim((string) ($propiedad['imagen'] ?? ''));
+
+// Prepara el nombre y la ubicación para mostrarlos en la página.
 $nombrePropiedad = htmlspecialchars((string) ($propiedad['nombre'] ?? 'Propiedad'), ENT_QUOTES, 'UTF-8');
 $ubicacionPropiedad = htmlspecialchars((string) ($propiedad['ubicacion'] ?? ''), ENT_QUOTES, 'UTF-8');
+
+// Da formato al precio y agrega "/ mes" si la propiedad es de alquiler.
 $precioPropiedad = number_format((float) ($propiedad['precio'] ?? 0), 0, ',', '.');
 $operacionPropiedad = ($propiedad['tipo_operacion'] ?? '') === 'alquiler' ? ' / mes' : '';
 ?>
@@ -35,7 +40,7 @@ $operacionPropiedad = ($propiedad['tipo_operacion'] ?? '') === 'alquiler' ? ' / 
     <div class="tarjeta-propiedad__pie">
         <div>
             <span class="tarjeta-propiedad__etiqueta">Precio</span>
-            <p class="tarjeta-propiedad__precio">€<?php echo $precioPropiedad . $operacionPropiedad; ?></p>
+            <p class="tarjeta-propiedad__precio">$<?php echo $precioPropiedad . $operacionPropiedad; ?></p>
         </div>
         <a class="tarjeta-propiedad__enlace" href="/pag-inmobiliaria/pages/propiedad-detalle.php?id=<?php echo (int) ($propiedad['id'] ?? 0); ?>">Ver detalle <span aria-hidden="true">↗</span></a>
     </div>

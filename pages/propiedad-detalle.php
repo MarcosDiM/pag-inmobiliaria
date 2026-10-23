@@ -1,7 +1,9 @@
 <?php
+// Obtiene el ID de la propiedad enviado en la dirección.
 $idPropiedad = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 $propiedad = null;
 
+// Busca la propiedad activa que corresponde a ese ID.
 if ($idPropiedad !== false && $idPropiedad !== null) {
     require_once '../conexion.php';
     $consultaPropiedad = $conexion->prepare("SELECT * FROM propiedades WHERE id = :id AND estado = 'activo'");
@@ -9,13 +11,11 @@ if ($idPropiedad !== false && $idPropiedad !== null) {
     $propiedad = $consultaPropiedad->fetch(PDO::FETCH_ASSOC);
 }
 
+// Indica que la página no encontró la propiedad.
 if (!$propiedad) {
     http_response_code(404);
 }
 
-$tituloPropiedad = $propiedad
-    ? htmlspecialchars((string) $propiedad['nombre'], ENT_QUOTES, 'UTF-8') . ' | Nido'
-    : 'Propiedad no encontrada | Nido';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,10 +26,12 @@ $tituloPropiedad = $propiedad
     <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
+    <!-- Incluye la cabecera del sitio. -->
     <?php include '../includes/header.php'; ?>
     <main class="detalle-propiedad">
         <?php if ($propiedad): ?>
             <?php
+            // Prepara los datos de la propiedad para mostrarlos.
             $nombrePropiedad = htmlspecialchars((string) $propiedad['nombre'], ENT_QUOTES, 'UTF-8');
             $ubicacionPropiedad = htmlspecialchars((string) $propiedad['ubicacion'], ENT_QUOTES, 'UTF-8');
             $tipoPropiedad = htmlspecialchars(ucfirst((string) $propiedad['tipo_propiedad']), ENT_QUOTES, 'UTF-8');
@@ -55,7 +57,7 @@ $tituloPropiedad = $propiedad
                         <div class="detalle-propiedad__precio">
                             <div>
                                 <span class="detalle-propiedad__etiqueta">Precio</span>
-                                <p class="detalle-propiedad__importe">€<?php echo $precioPropiedad; ?><?php echo $operacionPropiedad === 'Alquiler' ? ' / mes' : ''; ?></p>
+                                <p class="detalle-propiedad__importe">$<?php echo $precioPropiedad; ?><?php echo $operacionPropiedad === 'Alquiler' ? ' / mes' : ''; ?></p>
                             </div>
                             <a class="detalle-propiedad__contacto" href="/pag-inmobiliaria/pages/contacto.php">Contactar</a>
                         </div>
@@ -70,6 +72,7 @@ $tituloPropiedad = $propiedad
                     </div>
                 </section>
 
+                <!-- Muestra los datos y características de la propiedad. -->
                 <section class="detalle-propiedad__caracteristicas" aria-labelledby="titulo-caracteristicas">
                     <h2 class="detalle-propiedad__subtitulo" id="titulo-caracteristicas">Características</h2>
                     <ul class="detalle-propiedad__lista">
@@ -119,6 +122,7 @@ $tituloPropiedad = $propiedad
             </section>
         <?php endif; ?>
     </main>
+    <!-- Incluye el pie de página del sitio. -->
     <?php include '../includes/footer.php'; ?>
 </body>
 </html>

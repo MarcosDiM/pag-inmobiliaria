@@ -1,6 +1,11 @@
 <?php
+// Obtiene el nombre del archivo abierto actualmente.
 $paginaActual = basename($_SERVER['PHP_SELF']);
+
+// Marca como activa la sección de propiedades en sus dos páginas.
 $esPropiedades = in_array($paginaActual, ['propiedades.php', 'agregar-propiedad.php'], true);
+
+// Comprueba si está abierta la página de configuración.
 $esConfiguracion = $paginaActual === 'configuracion.php';
 ?>
 <aside class="menu-admin" aria-label="Menú de administración">

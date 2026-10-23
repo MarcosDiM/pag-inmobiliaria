@@ -1,64 +1,22 @@
 <?php
+// Carga la conexión con la base de datos.
 require_once __DIR__ . '/../conexion.php';
 
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
-
-if (empty($_SESSION['token_eliminar_propiedad'])) {
-    $_SESSION['token_eliminar_propiedad'] = bin2hex(random_bytes(32));
-}
-
-$mensajeError = '';
-$mensajeExito = $_SESSION['mensaje_eliminar_propiedad'] ?? '';
-unset($_SESSION['mensaje_eliminar_propiedad']);
-
+// Si se envió el formulario de eliminación, borra la propiedad.
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['accion'] ?? '') === 'eliminar') {
-    $idPropiedad = filter_var($_POST['id'] ?? null, FILTER_VALIDATE_INT);
-    $tokenRecibido = $_POST['token'] ?? '';
-
-    if (
-        ($_POST['confirmar_eliminacion'] ?? '') !== '1'
-        || !is_int($idPropiedad)
-        || $idPropiedad < 1
-        || !is_string($tokenRecibido)
-        || !hash_equals($_SESSION['token_eliminar_propiedad'], $tokenRecibido)
-    ) {
-        $mensajeError = 'No se pudo confirmar la eliminación. Actualiza la página e inténtalo de nuevo.';
-    } else {
-        try {
-            $consultaEliminar = $conexion->prepare('DELETE FROM propiedades WHERE id = :id');
-            $consultaEliminar->execute(['id' => $idPropiedad]);
-
-            if ($consultaEliminar->rowCount() !== 1) {
-                $mensajeError = 'No se encontró la propiedad que intentas eliminar.';
-            } else {
-                $_SESSION['mensaje_eliminar_propiedad'] = 'La propiedad se eliminó correctamente.';
-                header('Location: propiedades.php');
-                exit;
-            }
-        } catch (PDOException $error) {
-            error_log('Error al eliminar una propiedad: ' . $error->getMessage());
-            $mensajeError = 'Ocurrió un error al eliminar la propiedad. Inténtalo de nuevo.';
-        }
-    }
+    $consultaEliminar = $conexion->prepare('DELETE FROM propiedades WHERE id = :id');
+    $consultaEliminar->execute(['id' => $_POST['id']]);
+    // Vuelve al listado para no enviar el formulario otra vez al actualizar.
+    header('Location: propiedades.php');
+    exit;
 }
 
+// Lee los filtros seleccionados en la página.
 $busqueda = trim($_GET['busqueda'] ?? '');
 $filtroTipo = $_GET['tipo'] ?? '';
 $filtroEstado = $_GET['estado'] ?? '';
 
-$tiposPermitidos = ['casa', 'departamento', 'terreno'];
-$estadosPermitidos = ['activo', 'inactivo'];
-
-if (!in_array($filtroTipo, $tiposPermitidos, true)) {
-    $filtroTipo = '';
-}
-
-if (!in_array($filtroEstado, $estadosPermitidos, true)) {
-    $filtroEstado = '';
-}
-
+// Guarda las condiciones de búsqueda y sus valores.
 $condiciones = [];
 $parametros = [];
 
@@ -78,12 +36,14 @@ if ($filtroEstado !== '') {
     $parametros['estado'] = $filtroEstado;
 }
 
+// Crea la consulta según los filtros que se hayan elegido.
 $consultaSql = 'SELECT id, nombre, ubicacion, tipo_propiedad, precio, estado, imagen FROM propiedades';
 if ($condiciones) {
     $consultaSql .= ' WHERE ' . implode(' AND ', $condiciones);
 }
 $consultaSql .= ' ORDER BY id DESC';
 
+// Ejecuta la consulta y guarda las propiedades encontradas.
 $consultaPropiedades = $conexion->prepare($consultaSql);
 $consultaPropiedades->execute($parametros);
 $propiedades = $consultaPropiedades->fetchAll(PDO::FETCH_ASSOC);
@@ -97,6 +57,7 @@ $propiedades = $consultaPropiedades->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body class="pagina-admin-propiedades">
+    <!-- Incluye la navegación del panel de administración. -->
     <?php include 'menu-admin.php'; ?>
     <main class="admin-propiedades">
         <header class="admin-propiedades__encabezado">
@@ -104,12 +65,7 @@ $propiedades = $consultaPropiedades->fetchAll(PDO::FETCH_ASSOC);
             <a class="admin-propiedades__nueva" href="agregar-propiedad.php">＋ Nueva Propiedad</a>
         </header>
 
-        <?php if ($mensajeError !== '' || $mensajeExito !== ''): ?>
-            <p class="admin-propiedades__mensaje <?php echo $mensajeError !== '' ? 'admin-propiedades__mensaje--error' : 'admin-propiedades__mensaje--exito'; ?>" role="status">
-                <?php echo htmlspecialchars($mensajeError !== '' ? $mensajeError : $mensajeExito, ENT_QUOTES, 'UTF-8'); ?>
-            </p>
-        <?php endif; ?>
-
+        <!-- El formulario envía los filtros por la URL. -->
         <form class="admin-propiedades__filtros" method="get" action="propiedades.php">
             <label class="admin-propiedades__busqueda">
                 <span class="admin-propiedades__etiqueta">Buscar propiedades</span>
@@ -153,8 +109,10 @@ $propiedades = $consultaPropiedades->fetchAll(PDO::FETCH_ASSOC);
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Muestra una fila por cada propiedad encontrada. -->
                     <?php foreach ($propiedades as $propiedad): ?>
                         <?php
+                        // Prepara los datos de la propiedad para mostrarlos.
                         $imagen = trim((string) ($propiedad['imagen'] ?? ''));
                         $nombre = htmlspecialchars((string) $propiedad['nombre'], ENT_QUOTES, 'UTF-8');
                         $ubicacion = htmlspecialchars((string) $propiedad['ubicacion'], ENT_QUOTES, 'UTF-8');
@@ -184,7 +142,6 @@ $propiedades = $consultaPropiedades->fetchAll(PDO::FETCH_ASSOC);
                                     <form class="admin-propiedades__formulario-eliminar" method="post" action="propiedades.php">
                                         <input type="hidden" name="accion" value="eliminar">
                                         <input type="hidden" name="id" value="<?php echo (int) $propiedad['id']; ?>">
-                                        <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION['token_eliminar_propiedad'], ENT_QUOTES, 'UTF-8'); ?>">
                                         <input class="admin-propiedades__control-eliminacion" id="confirmar-eliminacion-<?php echo (int) $propiedad['id']; ?>" type="checkbox" aria-label="Confirmar eliminación de <?php echo $nombre; ?>">
                                         <label class="admin-propiedades__boton-eliminar" for="confirmar-eliminacion-<?php echo (int) $propiedad['id']; ?>">Eliminar</label>
                                         <div class="admin-propiedades__confirmacion">
@@ -202,6 +159,7 @@ $propiedades = $consultaPropiedades->fetchAll(PDO::FETCH_ASSOC);
                             </td>
                         </tr>
                     <?php endforeach; ?>
+                    <!-- Muestra un mensaje cuando no hay resultados. -->
                     <?php if (!$propiedades): ?>
                         <tr>
                             <td class="admin-propiedades__vacio" colspan="7">No hay propiedades que coincidan con esos filtros.</td>
