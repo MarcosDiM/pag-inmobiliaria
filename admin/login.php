@@ -1,6 +1,6 @@
 <?php
 // Conecta con la base de datos para poder buscar al usuario.
-require_once __DIR__ . "/../conexion.php";
+include "../conexion.php";
 
 // Guarda el mensaje que se mostrará si los datos no son válidos.
 $mensaje = "";
