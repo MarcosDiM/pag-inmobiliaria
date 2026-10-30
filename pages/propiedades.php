@@ -3,7 +3,6 @@ require_once '../conexion.php';
 
 $filtroOperacion = $_GET['operacion'] ?? '';
 $filtroTipo = $_GET['tipo'] ?? '';
-$filtroLugar = $_GET['lugar'] ?? '';
 $filtroPrecio = $_GET['precio'] ?? '';
 
 $operacionesPermitidas = ['venta', 'alquiler'];
@@ -22,12 +21,6 @@ if (!in_array($filtroPrecio, $preciosPermitidos, true)) {
     $filtroPrecio = '';
 }
 
-$lugares = $conexion->query("SELECT DISTINCT ubicacion FROM propiedades WHERE estado = 'activo' ORDER BY ubicacion")->fetchAll(PDO::FETCH_COLUMN);
-
-if (!in_array($filtroLugar, $lugares, true)) {
-    $filtroLugar = '';
-}
-
 $condiciones = ["estado = 'activo'"];
 $parametros = [];
 
@@ -39,11 +32,6 @@ if ($filtroOperacion !== '') {
 if ($filtroTipo !== '') {
     $condiciones[] = 'tipo_propiedad = :tipo';
     $parametros['tipo'] = $filtroTipo;
-}
-
-if ($filtroLugar !== '') {
-    $condiciones[] = 'ubicacion = :lugar';
-    $parametros['lugar'] = $filtroLugar;
 }
 
 if ($filtroPrecio === 'hasta-100000') {
@@ -98,17 +86,6 @@ $propiedades = $consultaPropiedades->fetchAll(PDO::FETCH_ASSOC);
                             <option value="casa" <?php echo $filtroTipo === 'casa' ? 'selected' : ''; ?>>Casa</option>
                             <option value="departamento" <?php echo $filtroTipo === 'departamento' ? 'selected' : ''; ?>>Departamento</option>
                             <option value="terreno" <?php echo $filtroTipo === 'terreno' ? 'selected' : ''; ?>>Terreno</option>
-                        </select>
-                    </label>
-                    <label class="propiedades__campo-filtro">
-                        <span>Lugar</span>
-                        <select name="lugar">
-                            <option value="">Lugar</option>
-                            <?php foreach ($lugares as $lugar): ?>
-                                <option value="<?php echo htmlspecialchars($lugar, ENT_QUOTES, 'UTF-8'); ?>" <?php echo $filtroLugar === $lugar ? 'selected' : ''; ?>>
-                                    <?php echo htmlspecialchars($lugar, ENT_QUOTES, 'UTF-8'); ?>
-                                </option>
-                            <?php endforeach; ?>
                         </select>
                     </label>
                     <label class="propiedades__campo-filtro">
