@@ -3,8 +3,7 @@ $host = "localhost";
 $usuario = "root";
 $password = ""; 
 
-try {
-    // 1. Conectamos primero a MySQL sin seleccionar base de datos para asegurarnos de que exista
+    // 1. Conectamos primero a MySQL 
     $conexion = new PDO("mysql:host=$host;charset=utf8mb4", $usuario, $password);
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -39,9 +38,4 @@ try {
     
     $conexion->exec($sql);
     $conexion->exec($sqlUsuarios);
-
-} catch (PDOException $e) {
-    // Si hay un error crítico al conectar
-    die("Error de conexión: " . $e->getMessage());
-}
 ?>
